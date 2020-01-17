@@ -10,10 +10,15 @@
 #include <string>
 
 #include <frc/TimedRobot.h>
+#include <frc/WPILib.h>
 #include <frc/smartdashboard/SendableChooser.h>
+
+using namespace frc;
 
 class Robot : public frc::TimedRobot {
  public:
+  XboxController xbox;
+  RobotDrive driveTrain;
   void RobotInit() override;
   void RobotPeriodic() override;
   void AutonomousInit() override;
@@ -21,7 +26,9 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
+  Robot() : xbox(0), driveTrain(0, 1) {
 
+  }
  private:
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "Default";

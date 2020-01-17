@@ -1,4 +1,0 @@
-See file:///C:/Users/egame/Documents/FRC%202020/FRC-2020/Competition-2020/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramDebugExecutableFrcUserProgramCpp.
-compiling Robot.cpp successful.
-
-Finished compileFrcUserProgramDebugExecutableFrcUserProgramCpp, see full log file:///C:/Users/egame/Documents/FRC%202020/FRC-2020/Competition-2020/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt.

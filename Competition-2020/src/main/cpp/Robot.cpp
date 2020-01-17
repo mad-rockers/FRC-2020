@@ -8,6 +8,7 @@
 #include "Robot.h"
 
 #include <iostream>
+#include <frc/WPILib.h>
 
 #include <frc/smartdashboard/SmartDashboard.h>
 
@@ -61,7 +62,9 @@ void Robot::AutonomousPeriodic() {
 
 void Robot::TeleopInit() {}
 
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() {
+  driveTrain.TankDrive(-xbox.GetRawAxis(1), -xbox.GetRawAxis(5));
+}
 
 void Robot::TestPeriodic() {}
 
