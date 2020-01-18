@@ -19,7 +19,7 @@ class XboxController2 : public XboxController {
   public:
     float scale;
 
-    void set_scale(int s) {
+    void set_scale(float s) {
       scale = abs(s);
     }
 
