@@ -15,9 +15,30 @@
 
 using namespace frc;
 
+class XboxController2 : public XboxController {
+  public:
+    int scale;
+
+    void set_scale(int s) {
+      scale = s;
+    }
+
+    int GetRawAxis(int axis) {
+      if(GenericHID::GetRawAxis(axis) < 0.1 && GenericHID::GetRawAxis(axis) > -0.1) {
+        return 0;
+      }
+      else {
+        return scale * GenericHID::GetRawAxis(axis);
+      }
+    }
+    explicit XboxController2(int port) : XboxController(port){
+      scale = 1;
+    }
+};
+
 class Robot : public frc::TimedRobot {
  public:
-  XboxController xbox;
+  XboxController2 xbox;
   RobotDrive driveTrain;
   void RobotInit() override;
   void RobotPeriodic() override;

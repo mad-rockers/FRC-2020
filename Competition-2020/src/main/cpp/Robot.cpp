@@ -63,6 +63,7 @@ void Robot::AutonomousPeriodic() {
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
+  std::cout << xbox.GetRawAxis(1) << std::endl;
   driveTrain.TankDrive(-xbox.GetRawAxis(1), -xbox.GetRawAxis(5));
 }
 
