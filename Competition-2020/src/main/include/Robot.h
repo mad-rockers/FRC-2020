@@ -17,10 +17,10 @@ using namespace frc;
 
 class XboxController2 : public XboxController {
   public:
-    unsigned short int scale;
+    float scale;
 
     void set_scale(int s) {
-      scale = s;
+      scale = abs(s);
     }
 
     double GetRawAxis(int axis) {
