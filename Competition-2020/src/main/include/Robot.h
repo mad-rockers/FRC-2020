@@ -23,7 +23,7 @@ class XboxController2 : public XboxController {
       scale = s;
     }
 
-    int GetRawAxis(int axis) {
+    double GetRawAxis(int axis) {
       if(GenericHID::GetRawAxis(axis) < 0.1 && GenericHID::GetRawAxis(axis) > -0.1) {
         return 0;
       }
