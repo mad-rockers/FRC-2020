@@ -17,7 +17,7 @@ using namespace frc;
 
 class XboxController2 : public XboxController {
   public:
-    int scale;
+    unsigned short int scale;
 
     void set_scale(int s) {
       scale = s;
