@@ -13,32 +13,14 @@
 #include <frc/WPILib.h>
 #include <frc/smartdashboard/SendableChooser.h>
 
+//our custom controller
+#include "CustomController.h"
+
 using namespace frc;
-
-class XboxController2 : public XboxController {
-  public:
-    float scale;
-
-    void set_scale(float s) {
-      scale = abs(s);
-    }
-
-    double GetRawAxis(int axis) {
-      if(GenericHID::GetRawAxis(axis) < 0.1 && GenericHID::GetRawAxis(axis) > -0.1) {
-        return 0;
-      }
-      else {
-        return scale * GenericHID::GetRawAxis(axis);
-      }
-    }
-    explicit XboxController2(int port) : XboxController(port){
-      scale = 1;
-    }
-};
 
 class Robot : public frc::TimedRobot {
  public:
-  XboxController2 xbox;
+  CustomController xbox; //use our custom controller
   RobotDrive driveTrain;
   void RobotInit() override;
   void RobotPeriodic() override;
