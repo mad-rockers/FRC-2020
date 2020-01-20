@@ -3,9 +3,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**",
-                "../wpilibc-cpp-2020.1.2-headers",
-                "../hal-cpp-2020.1.2-headers"
+                "${workspaceFolder}/**"
             ],
             "defines": [
                 "_DEBUG",

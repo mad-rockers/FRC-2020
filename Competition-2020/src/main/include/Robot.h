@@ -13,11 +13,14 @@
 #include <frc/WPILib.h>
 #include <frc/smartdashboard/SendableChooser.h>
 
+//our custom controller
+#include "CustomController.h"
+
 using namespace frc;
 
 class Robot : public frc::TimedRobot {
  public:
-  XboxController xbox;
+  CustomController xbox;
   RobotDrive driveTrain;
   void RobotInit() override;
   void RobotPeriodic() override;
