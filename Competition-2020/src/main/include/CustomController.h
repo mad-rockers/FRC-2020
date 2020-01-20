@@ -24,49 +24,50 @@ class CustomController : public XboxController {
      * @param port The port on the Driver Station that the controller is plugged
      *             into (0-5).
      */
-    explicit CustomController(int port);
+    explicit CustomController(int port) : XboxController(port) {
+       is_square = true;
+    };
     
     /**
-     * Set the scale of the controller. The scale cannot be negative.
-     * 
-     * @param scale The scale to set the controller to.
+     * Toggles square scaling between on and off.
      */
-    void set_scale(float scale);
+    void toogle_square_scale() {
+      is_square = !is_square;
+    }
 
     /**
-     * Get the current scaling of the controller.
-     * 
-     * @return The current scaling of the controller.
-     */
-    float get_scale();
-
-    /**
-     * Sets a square scaling.
-     * 
-     * The controller is 0 until a certain percent, then 1 at or after the percent.
-     * 
-     * For example, a square curve at 50 percent would set the controller to 0 until it is moved to the halfway point.
-     * 
-     * @param percent The percent (0-100) that the controller is set to 0.
-     */
-    void square_scale(float percent);
-
-    /**
-     * Returns the percent that the square scale is at. If a square scale is not used, it returns -1.
-     * 
-     * @return The square scale percent, or -1 if not applicable.
-     */
-    float get_square();
-    
-    /**
-     * Get the value of the axis times the current scale. A deadzone of 0.1 is implemented.
+     * Get the value of an axis. A deadzone of 0.1 is implemented.
      *
      * @param axis The axis to read, starting at 0.
      * @return The value of the axis between -1 and 1.
      */
-    double GetRawAxis(int axis);
+    double GetRawAxis(int axis) {
+        double value = GenericHID::GetRawAxis(axis);
+        if(CustomController::in_deadzone(axis)) { //If the value is between -0.1 and 0.1, return 0.
+            return 0;
+        }
+        if(square) {
+            if(value >= scale / 100) { //Perform square scaling.
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+        else {
+            value *= scale;
+            if (value > 1) { //Ensure the value is not above 1.
+                return 1;
+            }
+            else if (value < -1) { //Ensure the value is not below -1.
+                return -1;
+            }
+            else {
+                return value;
+            }
+        }
+    }
     
   private:
-    float scale;
-    bool square;
+    bool is_square;
 };
