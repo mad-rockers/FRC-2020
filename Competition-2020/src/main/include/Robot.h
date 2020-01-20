@@ -20,7 +20,7 @@ using namespace frc;
 
 class Robot : public frc::TimedRobot {
  public:
-  CustomController xbox; //use our custom controller
+  CustomController xbox;
   RobotDrive driveTrain;
   void RobotInit() override;
   void RobotPeriodic() override;
