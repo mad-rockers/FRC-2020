@@ -15,6 +15,7 @@
 
 //our custom controller
 #include "CustomController.h"
+#include "ports.h"
 
 using namespace frc;
 
@@ -29,7 +30,7 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
-  Robot() : xbox(0), driveTrain(0, 1) {
+  Robot() : xbox(XBOX_DRIVER), driveTrain(LEFT_DRIVE_TRAIN, RIGHT_DRIVE_TRAIN) {
 
   }
  private:

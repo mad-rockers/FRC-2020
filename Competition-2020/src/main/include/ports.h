@@ -46,8 +46,7 @@ enum USB
     USB_3 = 3
 };
 
-const USB xbox_driver = USB::USB_0;
+const USB XBOX_DRIVER = USB::USB_0;
 
-// 
-const PWM left_drive_train = PWM::PWM_0;
-const PWM right_drive_train = PWM::PWM_1;
+const PWM LEFT_DRIVE_TRAIN = PWM::PWM_0;
+const PWM RIGHT_DRIVE_TRAIN = PWM::PWM_1;
