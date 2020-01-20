@@ -41,6 +41,24 @@ class CustomController : public XboxController {
     float get_scale();
 
     /**
+     * Sets a square scaling.
+     * 
+     * The controller is 0 until a certain percent, then 1 at or after the percent.
+     * 
+     * For example, a square curve at 50 percent would set the controller to 0 until it is moved to the halfway point.
+     * 
+     * @param percent The percent (0-100) that the controller is set to 0.
+     */
+    void square_scale(float percent);
+
+    /**
+     * Returns the percent that the square scale is at. If a square scale is not used, it returns -1.
+     * 
+     * @return The square scale percent, or -1 if not applicable.
+     */
+    float get_square();
+    
+    /**
      * Get the value of the axis times the current scale. A deadzone of 0.1 is implemented.
      *
      * @param axis The axis to read, starting at 0.
@@ -48,6 +66,7 @@ class CustomController : public XboxController {
      */
     double GetRawAxis(int axis);
     
-  private:
+  //private:
     float scale;
+    bool square;
 };
