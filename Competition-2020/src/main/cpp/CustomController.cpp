@@ -44,16 +44,28 @@ float CustomController::get_square() {
 }
 
 double CustomController::GetRawAxis(int axis) {
-    if(GenericHID::GetRawAxis(axis) > -0.1 && GenericHID::GetRawAxis(axis) < 0.1) { //If the value is between -0.1 and 0.1, return 0.
+    double value = GenericHID::GetRawAxis(axis);
+    if(value > -0.1 && value < 0.1) { //If the value is between -0.1 and 0.1, return 0.
         return 0;
     }
-    else if (GenericHID::GetRawAxis(axis) > 1) { //Ensure the value is not above 1.
-        return 1;
-    }
-    else if (GenericHID::GetRawAxis(axis) < -1) { //Ensure the value is not below -1.
-        return -1;
+    if(square) {
+        if(value >= scale / 100) { //Perform square scaling.
+            return 1;
+        }
+        else {
+            return 0;
+        }
     }
     else {
-        return GenericHID::GetRawAxis(axis);
+        value *= scale;
+        if (value > 1) { //Ensure the value is not above 1.
+            return 1;
+        }
+        else if (value < -1) { //Ensure the value is not below -1.
+            return -1;
+        }
+        else {
+            return value;
+        }
     }
 }
