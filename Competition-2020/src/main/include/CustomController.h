@@ -27,22 +27,26 @@ class CustomController : public XboxController {
      */
     explicit CustomController(int port) : XboxController(port) {
        is_square = true;
+       deadzone = 0.1;
     };
     
     /**
-     * Toggles square scaling between on and off.
+     * Sets square scaling to on or off.
+     * 
+     * @param input The boolean to set the square scaling to.
      */
-    void toogle_square_scale() {
-      is_square = !is_square;
+    void set_square_scale(bool input) {
+      is_square = input;
     }
 
     /**
      * Returns whether the controller axis is in the deadzone. The deadzone -0.1 to 0.1.
      * 
+     * @param value The value to check.
      * @return A boolean of whether the controller axis is in the deadzone.
      */
-    bool in_deadzone(int axis) {
-      return GenericHID::GetRawAxis(axis) < 0.1 && GenericHID::GetRawAxis(axis) > -0.1; //If the axis is inside our deadzone(0.1), return true.
+    bool in_deadzone(double value) {
+      return value < deadzone && value > -deadzone; //If the value is inside our deadzone, return true.
     }
 
     /**
@@ -53,15 +57,15 @@ class CustomController : public XboxController {
      */
     double GetRawAxis(int axis) {
         double value = GenericHID::GetRawAxis(axis);
-        if(in_deadzone(axis)) { //If the value is in the deadzone, return 0.
+        if(in_deadzone(value)) { //If the value is in the deadzone, return 0.
             return 0;
         }
         if(is_square) {
             if(value > 0) {
-              return pow((value - 0.1) / 0.9, 2); //If it's above 0, use a positive square curve.
+              return pow((value - deadzone) / (1 - deadzone), 2); //If it's above 0, use a positive square curve.
             }
             else {
-              return -pow((value + 0.1) / 0.9, 2); //If it's below 0, use a negative square curve.
+              return -pow((value + deadzone) / (1 - deadzone), 2); //If it's below 0, use a negative square curve.
             }
         }
         else {
@@ -71,4 +75,5 @@ class CustomController : public XboxController {
     
   private:
     bool is_square;
+    float deadzone;
 };
