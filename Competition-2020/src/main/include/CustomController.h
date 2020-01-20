@@ -66,7 +66,7 @@ class CustomController : public XboxController {
      */
     double GetRawAxis(int axis);
     
-  //private:
+  private:
     float scale;
     bool square;
 };
