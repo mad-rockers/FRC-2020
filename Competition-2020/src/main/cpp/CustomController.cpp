@@ -10,6 +10,7 @@ CustomController::CustomController(int port) : XboxController(port) {
 
 void CustomController::set_scale(float scale) {
     scale = abs(scale); //Make sure the scale is not negative.
+    square = false;
 }
 
 float CustomController::get_scale() {
