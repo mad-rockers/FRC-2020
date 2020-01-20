@@ -1,4 +1,5 @@
 #include <frc/WPILib.h>
+#include <cmath>
 
 using namespace frc;
 
@@ -36,35 +37,35 @@ class CustomController : public XboxController {
     }
 
     /**
-     * Get the value of an axis. A deadzone of 0.1 is implemented.
+     * Returns whether the controller axis is in the deadzone. The deadzone -0.1 to 0.1.
+     * 
+     * @return A boolean of whether the controller axis is in the deadzone.
+     */
+    bool in_deadzone(int axis) {
+      return GenericHID::GetRawAxis(axis) < 0.1 && GenericHID::GetRawAxis(axis) > -0.1; //If the axis is inside our deadzone(0.1), return true.
+    }
+
+    /**
+     * Get the value of the axis. A deadzone is implemented.
      *
      * @param axis The axis to read, starting at 0.
      * @return The value of the axis between -1 and 1.
      */
     double GetRawAxis(int axis) {
         double value = GenericHID::GetRawAxis(axis);
-        if(CustomController::in_deadzone(axis)) { //If the value is between -0.1 and 0.1, return 0.
+        if(in_deadzone(axis)) { //If the value is in the deadzone, return 0.
             return 0;
         }
-        if(square) {
-            if(value >= scale / 100) { //Perform square scaling.
-                return 1;
+        if(is_square) {
+            if(value > 0) {
+              return pow((value - 0.1) / 0.9, 2); //If it's above 0, use a positive square curve.
             }
             else {
-                return 0;
+              return -pow((value + 0.1) / 0.9, 2); //If it's below 0, use a negative square curve.
             }
         }
         else {
-            value *= scale;
-            if (value > 1) { //Ensure the value is not above 1.
-                return 1;
-            }
-            else if (value < -1) { //Ensure the value is not below -1.
-                return -1;
-            }
-            else {
-                return value;
-            }
+            return value;
         }
     }
     
