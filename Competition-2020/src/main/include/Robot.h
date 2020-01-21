@@ -30,7 +30,7 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
-  Robot() : xbox(XBOX_DRIVER), driveTrain(LEFT_DRIVE_TRAIN, RIGHT_DRIVE_TRAIN) {
+  Robot() : xbox(Ports::XBOX_DRIVER), driveTrain(Ports::LEFT_DRIVE_TRAIN, Ports::RIGHT_DRIVE_TRAIN) {
 
   }
  private:
