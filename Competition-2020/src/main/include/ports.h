@@ -34,7 +34,7 @@ namespace Ports {
     {
         ANALOG_0 = 0,
         ANALOG_1 = 1,
-        ANALOG_0 = 2,
+        ANALOG_2 = 2,
         ANALOG_3 = 3
     };
 
