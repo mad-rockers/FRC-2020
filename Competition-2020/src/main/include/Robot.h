@@ -12,6 +12,7 @@
 #include <frc/TimedRobot.h>
 #include <frc/WPILib.h>
 #include <frc/smartdashboard/SendableChooser.h>
+#include "rev/CANSparkMax.h"
 
 //our custom controller
 #include "CustomController.h"
@@ -21,7 +22,8 @@ using namespace frc;
 class Robot : public frc::TimedRobot {
  public:
   CustomController xbox;
-  RobotDrive driveTrain;
+  //RobotDrive driveTrain;
+  rev::CANSparkMax testNeo;
   void RobotInit() override;
   void RobotPeriodic() override;
   void AutonomousInit() override;
@@ -29,7 +31,7 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
-  Robot() : xbox(0), driveTrain(0, 1) {
+  Robot() : xbox(0), /*driveTrain(0, 1),*/ testNeo(9, rev::CANSparkMax::MotorType::kBrushless) {
 
   }
  private:

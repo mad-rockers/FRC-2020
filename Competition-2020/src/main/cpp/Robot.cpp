@@ -63,7 +63,16 @@ void Robot::AutonomousPeriodic() {
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
-  driveTrain.TankDrive(-xbox.GetRawAxis(1), -xbox.GetRawAxis(5));
+  if (xbox.GetAButton()) {
+    testNeo.Set(1);
+  }
+  else if (xbox.GetBButton()) {
+    testNeo.Set(-1);
+  }
+  else {
+    testNeo.Set(0);
+  }
+  //driveTrain.TankDrive(-xbox.GetRawAxis(1), -xbox.GetRawAxis(5));
 }
 
 void Robot::TestPeriodic() {}
