@@ -24,6 +24,7 @@ class Robot : public frc::TimedRobot {
   CustomController xbox;
   //RobotDrive driveTrain;
   rev::CANSparkMax testNeo;
+  rev::CANEncoder testNeoEncoder;
   void RobotInit() override;
   void RobotPeriodic() override;
   void AutonomousInit() override;
@@ -31,8 +32,8 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
-  Robot() : xbox(0), /*driveTrain(0, 1),*/ testNeo(9, rev::CANSparkMax::MotorType::kBrushless) {
-
+  Robot() : xbox(0), /*driveTrain(0, 1),*/ testNeo(9, rev::CANSparkMax::MotorType::kBrushless), testNeoEncoder(testNeo) {
+    
   }
  private:
   frc::SendableChooser<std::string> m_chooser;

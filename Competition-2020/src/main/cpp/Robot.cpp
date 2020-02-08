@@ -63,6 +63,8 @@ void Robot::AutonomousPeriodic() {
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
+  SmartDashboard::PutNumber("RPM", testNeoEncoder.GetVelocity());
+  std::cout << testNeoEncoder.GetVelocity() << std::endl;
   if (xbox.GetAButton()) {
     testNeo.Set(1);
   }
