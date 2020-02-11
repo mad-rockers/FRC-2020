@@ -23,7 +23,8 @@ class Robot : public frc::TimedRobot {
  public:
   CustomController xbox;
   //RobotDrive driveTrain;
-  rev::CANSparkMax testNeo;
+  rev::CANSparkMax testNeoL;
+  rev::CANSparkMax testNeoR;
   rev::CANEncoder testNeoEncoder;
   void RobotInit() override;
   void RobotPeriodic() override;
@@ -32,7 +33,7 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
-  Robot() : xbox(0), /*driveTrain(0, 1),*/ testNeo(9, rev::CANSparkMax::MotorType::kBrushless), testNeoEncoder(testNeo) {
+  Robot() : xbox(0), /*driveTrain(0, 1),*/ testNeoL(1, rev::CANSparkMax::MotorType::kBrushless), testNeoR(9, rev::CANSparkMax::MotorType::kBrushless), testNeoEncoder(testNeoR) {
     
   }
  private:
