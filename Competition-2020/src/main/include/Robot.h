@@ -33,7 +33,7 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
-  Robot() : xbox(0), /*driveTrain(0, 1),*/ testNeoL(1, rev::CANSparkMax::MotorType::kBrushless), testNeoR(9, rev::CANSparkMax::MotorType::kBrushless), testNeoEncoder(testNeoR) {
+  Robot() : xbox(0), /*driveTrain(0, 1),*/ testNeoL(1, rev::CANSparkMax::MotorType::kBrushless), testNeoR(9, rev::CANSparkMax::MotorType::kBrushless), testNeoEncoder(testNeoL) {
     
   }
  private:
