@@ -16,8 +16,6 @@ void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
-  SmartDashboard::PutNumber("L", 0);
-  SmartDashboard::PutNumber("R", 0);
 }
 
 /**
@@ -65,20 +63,7 @@ void Robot::AutonomousPeriodic() {
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
-  //SmartDashboard::PutNumber("RPM", testNeoEncoder.GetVelocity());
-  std::cout << testNeoEncoder.GetVelocity() << std::endl;
-  /*if (xbox.GetAButton()) {
-    testNeo.Set(1);
-  }
-  else if (xbox.GetBButton()) {
-    testNeo.Set(-1);
-  }
-  else {
-    testNeo.Set(0);
-  }*/
-  testNeoR.Set(-SmartDashboard::GetNumber("R", 0));
-  testNeoL.Set(SmartDashboard::GetNumber("L", 0));
-  //driveTrain.TankDrive(-xbox.GetRawAxis(1), -xbox.GetRawAxis(5));
+  driveTrain.TankDrive(-xbox.GetRawAxis(1), -xbox.GetRawAxis(5));
 }
 
 void Robot::TestPeriodic() {}
