@@ -65,6 +65,7 @@ void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
   xbox.set_square_scale(false);
   driveTrain.TankDrive(-xbox.GetRawAxis(1), -xbox.GetRawAxis(5));
+  //SmartDashboard::PutNumber("Amps", pdp.GetCurrent(1));
 }
 
 void Robot::TestPeriodic() {}
