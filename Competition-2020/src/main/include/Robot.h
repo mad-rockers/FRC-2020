@@ -23,6 +23,7 @@ class Robot : public frc::TimedRobot {
  public:
   CustomController xbox;
   RobotDrive driveTrain;
+  bool square;
   void RobotInit() override;
   void RobotPeriodic() override;
   void AutonomousInit() override;
@@ -31,7 +32,7 @@ class Robot : public frc::TimedRobot {
   void TeleopPeriodic() override;
   void TestPeriodic() override;
   Robot() : xbox(0), driveTrain(0, 1, 2, 3) {
-    
+    square = false;
   }
  private:
   frc::SendableChooser<std::string> m_chooser;
