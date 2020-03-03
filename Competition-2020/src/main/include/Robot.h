@@ -23,7 +23,6 @@ class Robot : public frc::TimedRobot {
  public:
   CustomController xbox;
   RobotDrive driveTrain;
-  PowerDistributionPanel pdp;
   void RobotInit() override;
   void RobotPeriodic() override;
   void AutonomousInit() override;
@@ -31,7 +30,7 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
-  Robot() : xbox(0), driveTrain(0, 1, 2, 3), pdp() {
+  Robot() : xbox(0), driveTrain(0, 1, 2, 3) {
     
   }
  private:
