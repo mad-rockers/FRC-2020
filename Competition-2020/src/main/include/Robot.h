@@ -14,8 +14,9 @@
 #include <frc/smartdashboard/SendableChooser.h>
 #include "rev/CANSparkMax.h"
 
-//our custom controller
+//Custom classes
 #include "CustomController.h"
+#include "Limelight.h"
 
 using namespace frc;
 
@@ -23,6 +24,7 @@ class Robot : public frc::TimedRobot {
  public:
   CustomController xbox;
   RobotDrive driveTrain;
+  Limelight limelight;
   bool square;
   void RobotInit() override;
   void RobotPeriodic() override;
@@ -31,7 +33,7 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
-  Robot() : xbox(0), driveTrain(0, 1, 2, 3) {
+  Robot() : xbox(0), driveTrain(0, 1, 2, 3), limelight() {
     square = false;
   }
  private:
