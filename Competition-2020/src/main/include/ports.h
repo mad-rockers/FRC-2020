@@ -47,6 +47,22 @@ namespace Ports {
         USB_3 = 3
     };
 
+    // CAN
+
+    enum CAN
+    {
+        CAN_0 = 0,
+        CAN_1 = 1,
+        CAN_2 = 2,
+        CAN_3 = 3,
+        CAN_4 = 4,
+        CAN_5 = 5,
+        CAN_6 = 6,
+        CAN_7 = 7,
+        CAN_8 = 8,
+        CAN_9 = 9
+    };
+
     const USB XBOX_DRIVER = USB::USB_0;
 
     const PWM LEFT_DRIVE_TRAIN = PWM::PWM_0;
