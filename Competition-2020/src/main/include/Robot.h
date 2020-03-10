@@ -35,7 +35,7 @@ class Robot : public frc::TimedRobot {
   void TestPeriodic() override;
   Robot() : xbox(Ports::XBOX_DRIVER),
     driveTrain(Ports::LEFT_DRIVE_TRAIN, Ports::RIGHT_DRIVE_TRAIN),
-    shooter(9, rev::CANSparkMax::MotorType::kBrushless) {
+    shooter(Ports::SHOOTER, rev::CANSparkMax::MotorType::kBrushless) {
 
   }
  private:
