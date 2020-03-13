@@ -73,56 +73,24 @@ class CustomController : public XboxController {
         }
     }
     
-    /**
-     * Returns whether the climber-up control is pressed.
-     * 
-     * @return Whether the climber-up control is pressed
-     */
     bool isClimberUp() {
       int value = GenericHID::GetPOV();
-      if (value == 315 || value == 0 || value == 45) {
-        return true;
-      }
-      return false;
+      return value == 315 || value == 0 || value == 45;
     }
     
-    /**
-     * Returns whether the climber-down control is pressed.
-     * 
-     * @return Whether the climber-down control is pressed
-     */
     bool isClimberDown() {
       int value = GenericHID::GetPOV();
-      if (value == 180) {
-        return true;
-      }
-      return false;
+      return value == 180;
     }
     
-    /**
-     * Returns whether the climber-left control is pressed.
-     * 
-     * @return Whether the climber-left control is pressed
-     */
     bool isClimberLeft() {
       int value = GenericHID::GetPOV();
-      if (value == 225 || value == 270) {
-        return true;
-      }
-      return false;
+      return value == 225 || value == 270;
     }
     
-    /**
-     * Returns whether the climber-right control is pressed.
-     * 
-     * @return Whether the climber-right control is pressed
-     */
     bool isClimberRight() {
       int value = GenericHID::GetPOV();
-      if (value == 90 || value == 135) {
-        return true;
-      }
-      return false;
+      return value == 90 || value == 135;
     }
     
     float GetLeftDriveTrain() {
@@ -148,8 +116,6 @@ class CustomController : public XboxController {
     bool GetIntakeButtonPressed() {
       return XboxController::GetYButtonPressed();
     }
-
-    virtual ~CustomController() {}
 
   private:
     bool is_square;
