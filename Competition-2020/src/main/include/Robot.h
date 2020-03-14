@@ -33,7 +33,7 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
-  Robot() : xbox(0), driveTrain(0, 1, 2, 3), limelight() {
+  Robot() : xbox(0), driveTrain(0, 1), limelight() {
     square = false;
   }
  private:
