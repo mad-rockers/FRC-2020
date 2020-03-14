@@ -63,7 +63,7 @@ void Robot::AutonomousPeriodic() {
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
-  driveTrain.TankDrive(-xbox.GetLeftDriveTrain()), -xbox.GetRightDriveTrain());
+  driveTrain.TankDrive(-xbox.GetLeftDriveTrain(), -xbox.GetRightDriveTrain());
   shooter.Set(-xbox.GetRawAxis(3));
 }
 
